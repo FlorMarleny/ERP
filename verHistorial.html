@@ -3,6 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Acciones</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .styled-table th, .styled-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Historial de Acciones</h1>
+
+        <table id="tabla-historial" class="styled-table">
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Acción</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas del historial se generarán dinámicamente -->
+            </tbody>
+        </table>
+
+        <button onclick="window.location.href='index.html'">Volver al Inicio</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="verHistorial.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Historial</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,4 +79,4 @@
     <script src="app.js"></script>
     <script src="verHistorial.js"></script>
 </body>
-</html>
+</html> -->

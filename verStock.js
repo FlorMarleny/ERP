@@ -27,3 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     actualizarTablaStock();
 });
+
+
+function obtenerInventario() {
+    return JSON.parse(localStorage.getItem('inventario')) || [];
+}

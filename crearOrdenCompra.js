@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (codigoOrdenCompra) {
             mostrarMensaje('success', `Orden de Compra creada correctamente con código: ${codigoOrdenCompra}`);
             crearOrdenCompraForm.reset();
+            registrarHistorial('Creación de Orden de Compra', `Orden de Compra creada: ${codigoOrdenCompra}`); // Registro en el historial
             actualizarStockDesdeSolped(codigoSolped); // Actualizar el stock después de crear la Orden de Compra
         } else {
             mostrarMensaje('error', 'Error al crear la Orden de Compra. Inténtalo de nuevo.');
@@ -64,25 +65,22 @@ function actualizarStockDesdeSolped(codigoSolped) {
     }
 
     const inventario = obtenerInventario();
+    const materialExistente = inventario.find(material => material.numero === solpedEncontrada.numeroMaterial);
 
-    solpedEncontrada.materiales.forEach(solpedMaterial => {
-        const materialExistente = inventario.find(material => material.numero === solpedMaterial.numero);
-
-        if (materialExistente) {
-            materialExistente.cantidad += solpedMaterial.cantidad;
-        } else {
-            inventario.push({
-                numero: solpedMaterial.numero,
-                nombre: solpedMaterial.nombre,
-                cantidad: solpedMaterial.cantidad,
-                unidad: solpedMaterial.unidad,
-                precio: solpedMaterial.precio
-            });
-        }
-    });
+    if (materialExistente) {
+        materialExistente.cantidad += solpedEncontrada.cantidad;
+    } else {
+        inventario.push({
+            numero: solpedEncontrada.numeroMaterial,
+            nombre: solpedEncontrada.nombreMaterial,
+            cantidad: solpedEncontrada.cantidad,
+            unidad: 'unidad', 
+            precio: 0 
+        });
+    }
 
     guardarInventario(inventario);
-    actualizarTablaStock(); // Actualizar la tabla visual del stock
+    actualizarTablaStock();
 }
 
 function generarCodigoUnico() {
@@ -117,4 +115,16 @@ function obtenerInventario() {
 
 function guardarInventario(inventario) {
     localStorage.setItem('inventario', JSON.stringify(inventario));
+}
+
+
+function registrarHistorial(accion, descripcion) {
+    let historial = JSON.parse(localStorage.getItem('historial')) || [];
+    const nuevoRegistro = {
+        fecha: new Date().toISOString(),
+        accion: accion,
+        descripcion: descripcion
+    };
+    historial.push(nuevoRegistro);
+    localStorage.setItem('historial', JSON.stringify(historial));
 }

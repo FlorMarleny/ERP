@@ -16,9 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const codigoSolped = crearSolped(numeroMaterial, nombreMaterial, cantidad, almacen);
 
-        mostrarMensaje('success', `SOLPED creada correctamente. Código: ${codigoSolped}`);
+        if (codigoSolped) {
+            mostrarMensaje('success', `SOLPED creada correctamente. Código: ${codigoSolped}`);
+            crearSolpedForm.reset();
+            registrarHistorial('Creación de SOLPED', `SOLPED creado: ${codigoSolped}`); // Registro en el historial
+        } else {
+            mostrarMensaje('error', 'Error al crear la SOLPED. Inténtalo de nuevo.');
+        }
 
-        crearSolpedForm.reset();
     });
 });
 
@@ -55,4 +60,15 @@ function generarCodigoUnico() {
 function mostrarMensaje(tipo, mensaje) {
     // Función ficticia para mostrar mensajes
     alert(`${tipo.toUpperCase()}: ${mensaje}`);
+}
+
+function registrarHistorial(accion, descripcion) {
+    let historial = JSON.parse(localStorage.getItem('historial')) || [];
+    const nuevoRegistro = {
+        fecha: new Date().toISOString(),
+        accion: accion,
+        descripcion: descripcion
+    };
+    historial.push(nuevoRegistro);
+    localStorage.setItem('historial', JSON.stringify(historial));
 }
