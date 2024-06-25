@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Material</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Nuevo Material</h1>
+
+        <form id="crear-material-form" class="form-container">
+            <div class="form-group">
+                <label for="numero-material">Número de Material:</label>
+                <input type="text" id="numero-material" name="numero-material" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre-material">Nombre:</label>
+                <input type="text" id="nombre-material" name="nombre-material" required>
+            </div>
+
+            <div class="form-group">
+                <label for="unidad-medida">Unidad de Medida:</label>
+                <select id="unidad-medida" name="unidad-medida" required>
+                    <option value="kg">Kilogramos</option>
+                    <option value="lt">Litros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="almacen-material">Almacén:</label>
+                <select id="almacen-material" name="almacen-material" required>
+                    <option value="A01">A01</option>
+                    <option value="A02">A02</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="precio-material">Precio:</label>
+                <input type="number" step="0.01" id="precio-material" name="precio-material" required>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Guardar Material</button>
+                <button type="button" onclick="window.location.href='index.html'">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="creaMaterial.js"></script>
+</body>
+</html>

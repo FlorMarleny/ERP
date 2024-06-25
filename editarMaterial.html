@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Material</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Material</h1>
+
+        <form id="form-editar-material" class="form-container">
+            <input type="hidden" id="edit-material-index">
+            <label for="edit-material-numero">Número de Material:</label>
+            <input type="text" id="edit-material-numero" required><br><br>
+            <label for="edit-material-nombre">Nombre:</label>
+            <input type="text" id="edit-material-nombre" required><br><br>
+            <label for="edit-material-cantidad">Cantidad:</label>
+            <input type="number" id="edit-material-cantidad" required><br><br>
+            <label for="edit-material-unidad">Unidad de Medida:</label>
+            <select id="edit-material-unidad" required>
+                <option value="kg">kg</option>
+                <option value="lt">lt</option>
+            </select><br><br>
+            <label for="edit-material-almacen">Almacén:</label>
+            <select id="edit-material-almacen" required>
+                <option value="A01">A01</option>
+                <option value="A02">A02</option>
+            </select><br><br>
+            <label for="edit-material-precio">Precio:</label>
+            <input type="number" step="0.01" id="edit-material-precio" required><br><br>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script src="appEditar.js"></script>
+</body>
+</html>

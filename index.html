@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Simple</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido al ERP Simple</h1>
+
+        <div class="section">
+            <h1>Inventario de Materiales</h1>
+            <button onclick="window.location.href='crearMaterial.html'">Agregar Material</button>
+            <table id="materiales-table" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Número de Material</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de materiales se generan dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="buttons">
+            <button onclick="location.href='crearSolped.html'">Crear SOLPED</button>
+            <button onclick="location.href='crearOrdenCompra.html'">Crear Orden de Compra</button>
+            <button onclick="location.href='verStock.html'">Ver Stock</button>
+            <button onclick="location.href='verHistorial.html'">Ver Historial</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="listarMateriales.js"></script>
+</body>
+</html>
